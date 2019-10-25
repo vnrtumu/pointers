@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('main-content')    
+@section('main-content')
     <!-- Main content -->
 	<div class="content-wrapper">
 
@@ -28,7 +28,7 @@
                                 <span class="breadcrumb-item active">All Users</span>
                             </div>
                             <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 <!-- /page header -->
@@ -55,20 +55,20 @@
                                     <th width="10%">Picture</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>MObile No</th>                                    
-                                    <th>Address</th> 
-                                    <th>Created At</th>
+                                    <th>MObile No</th>
+                                    <th>Address</th>
+                                    <th>City</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td><img src="{{ asset('assets/images/demo/users/face2.jpg') }}" class="rounded-circle" width="32" height="32" alt=""></td>
+                                        <td><img src="{{ asset('images/profiles/'.$user->profile) }}" class="rounded-circle" width="32" height="32" alt=""></td>
                                         <td>{{ $user->name }}</td>
-                                        <td><a href="#">{{ $user->email }}</a></td>                                            
-                                        <td>9182387725</td>                                        
-                                        <td>Active</td>
-                                        <td>{{ $user->created_at }}</td>                                      
+                                        <td><a href="#">{{ $user->email }}</a></td>
+                                        <td>{{ $user->mobile_no }}</td>
+                                        <td>{{ $user->address }}</td>
+                                        <td>{{ $user->city }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

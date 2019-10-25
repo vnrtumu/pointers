@@ -26,3 +26,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/users', 'HomeController@users')->name('users');
 Route::get('/users', 'UserController@index')->name('users');
 
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile/create', 'ProfileController@create')->name('profile.create');
+Route::post('/profile/store', 'ProfileController@store')->name('profile.store');
+// Route::resource('/profile', 'ProfileController');
+

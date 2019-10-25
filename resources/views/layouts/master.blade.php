@@ -17,7 +17,8 @@
 	<link href="{{ asset('assets/css/bootstrap_limitless.min.css') }}" rel="stylesheet" type="text/css">
 	<link href="{{ asset('assets/css/layout.min.css') }}" rel="stylesheet" type="text/css">
 	<link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
-	<link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/croppie.css') }}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
 </head>
@@ -49,7 +50,7 @@
 			<span class="navbar-text ml-md-3 mr-md-auto">
 				<span class="badge bg-success">Online</span>
 			</span>
-			<ul class="navbar-nav">             
+			<ul class="navbar-nav">
 				<li class="nav-item dropdown dropdown-user">
                     @guest
                     <li class="nav-item">
@@ -60,14 +61,17 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
-                    
+
                     @else
 					<a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
 						<img src="{{ asset('global_assets/images/placeholders/placeholder.jpg') }}" class="rounded-circle" alt="">
                         <span>{{ Auth::user()->name }} </span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
+                        <a href="{{ route('profile.create' ) }}" class="dropdown-item"><i class="icon-user-plus"></i> Add Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ route('profile' ) }}" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
+
                         <a href="#" class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="icon-switch2"></i> {{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -136,8 +140,8 @@
                                 </a>
                             </li>
                             <li class="nav-item"><a href="{{ url('/users') }}" class="nav-link"><i class="icon-users4"></i> <span>All App Users </span></a></li>
-                            
-                            
+
+
                             <li class="nav-item nav-item-submenu">
                                 <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Layouts</span></a>
                                 <ul class="nav nav-group-sub" data-submenu-title="Layouts">
@@ -248,5 +252,9 @@
 	<script src="{{ asset('global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
 	<script src="{{ asset('global_assets/js/demo_pages/datatables_basic.js') }}"></script>
     <!-- /DataTables JS files -->
+
+    @section('scripts')
+
+    @show
 </body>
 </html>
